@@ -14,7 +14,7 @@ public class GeoLocationServiceImpl implements GeoLocationService {
     @Override
     public GeoLocationInfo geGeoLocationInfoByCode(String code) {
         return jdbcTemplate.queryForObject(
-                "SELECT id, zip, time_zone FROM geolocations WHERE zip = ?", new Object[]{code},
+                "select id, zip, time_zone from geolocations where zip = ?", new Object[]{code},
                 (rs, rowNum) -> new GeoLocationInfo(
                         rs.getLong("id"),
                         rs.getString("zip"),
