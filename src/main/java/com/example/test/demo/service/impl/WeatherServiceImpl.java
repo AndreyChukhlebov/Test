@@ -11,7 +11,7 @@ public class WeatherServiceImpl implements WeatherService {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public WeatherInfo getWeatherByCode(String code) {
+    public WeatherInfo getWeatherInfoByCode(String code) {
         return jdbcTemplate.queryForObject(
                 "select id, temperature, sity_code from weather_info where sity_code = ?", new Object[]{code},
                 (rs, rowNum) -> new WeatherInfo(

@@ -6,7 +6,9 @@ import java.util.StringJoiner;
 public class WeatherInfo implements Serializable {
 
     private Long id;
+
     private Integer temperature;
+
     private String sity;
 
     public Long getId() {

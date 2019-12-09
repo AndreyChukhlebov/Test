@@ -23,11 +23,12 @@ public class DemoApplication implements CommandLineRunner {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-
     @Override
-    public void run(String... strings) throws Exception {
+    public void run(String... strings) {
+        log.info("init test data");
 
         log.info("Creating table geolocations");
+
         jdbcTemplate.execute("drop table geolocations if exists");
         jdbcTemplate.execute("create table geolocations(id serial, time_zone varchar(255), zip varchar(255))");
         List<Object[]> splitGeolocationData = Arrays.asList("zone1 zip1", "zone2 zip2", "zone4 zip4", "zone3 zip3").stream()
@@ -36,8 +37,8 @@ public class DemoApplication implements CommandLineRunner {
         splitGeolocationData.forEach(name -> log.info(String.format("Inserting geolocations record for %s %s", name[0], name[1])));
         jdbcTemplate.batchUpdate("insert into geolocations(time_zone, zip) values (?,?)", splitGeolocationData);
 
-
         log.info("Creating table weather_info");
+
         jdbcTemplate.execute("drop table weather_info if exists");
         jdbcTemplate.execute("create table weather_info(id serial, sity_code varchar(255), temperature number )");
         List<Object[]> splitUpNames = Arrays.asList("city1 100", "city2 23", "city3 44", "city4 222").stream()

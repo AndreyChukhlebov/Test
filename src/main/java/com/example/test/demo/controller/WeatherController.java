@@ -24,6 +24,6 @@ public class WeatherController {
     @ResponseBody
     @LogExecution
     public WeatherInfo getTest(@PathVariable String code) {
-        return weatherService.getWeatherByCode(code);
+        return weatherService.getWeatherInfoByCode(code);
     }
 }

@@ -4,6 +4,6 @@ import com.example.test.demo.models.WeatherInfo;
 
 public interface WeatherService {
 
-    WeatherInfo getWeatherByCode(String code);
+    WeatherInfo getWeatherInfoByCode(String code);
 
 }
